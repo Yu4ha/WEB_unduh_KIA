@@ -10,101 +10,179 @@
     <link rel="icon" href="./assets/Yudha-removebg-preview.png">
     <link rel="icon" type="image/png"  href="./assets/Yudha-removebg-preview.png">
     <link rel="icon" type="image/png"  href="./assets/Yudha-removebg-preview.png">
-
-    
-    <title>Kritik dan Saran</title>
+    <title>Unduh Aplikasi Kartu Ibu dan Anak (KIA)</title>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="p-2 bg-dark text-light mb-3" style="position: sticky; top: 0; z-index: 1030; display: grid; grid-template-columns: auto 1fr auto; align-items: center;">
+<nav class="p-2 bg-success text-light mb-3" style="position: sticky; top: 0; z-index: 1030; display: grid; grid-template-columns: auto 1fr auto; align-items: center;">
 
   <div>
-    <img src="./assets/Yudha-removebg-preview.png" alt="Aplikasi Rekap Nilai dan Penilaian otomatis" style="width: 32px;">
+    <img src="./assets/icon.png" alt="Aplikasi Rekap Nilai dan Penilaian otomatis" style="width: 32px;">
   </div>
 
-  <p class="mb-0 text-center">Blog Rilis Aplikasi</p>
+  <p class="mb-0 text-center">Kartu Ibu dan Anak Digital</p>
 
   <a href="https://github.com/Yu4ha/webFeedback/releases/tag/daily_apps"
      class="bi bi-cloud-arrow-down-fill fs-4 text-light"
      title="Unduh App"></a>
 </nav>
 
-<div class="content px-2">
+<div style="border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 5px; background: var(--color-background-primary);">
 
-  <!-- Carousel -->
-  <div class="border rounded p-2 bg-white">
-    <div id="dashboardCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div style="border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px; background: var(--color-background-primary); max-width: 260px; margin: 0 auto;">
 
-      <div class="carousel-inner">
-        <div class="carousel-item active"
-             data-title="Dashboard"
-             data-desc="Ringkasan statistik, ranking siswa, dan edit nama guru.">
-          <img src="./assets/dasboard.png" class="d-block w-100" alt="Dashboard">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Data Siswa"
-             data-desc="Kelola data siswa manual atau import Excel dengan validasi otomatis.">
-          <img src="./assets/dataSiswa.png" class="d-block w-100" alt="Data Siswa">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Mata Pelajaran"
-             data-desc="Kelola mata pelajaran lengkap dengan KKM.">
-          <img src="./assets/mapel.png" class="d-block w-100" alt="Mapel">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Penilaian"
-             data-desc="Input, edit, dan simpan nilai siswa secara massal.">
-          <img src="./assets/penilaian.png" class="d-block w-100" alt="Penilaian">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Absensi"
-             data-desc="Kelola kehadiran siswa dan perhitungan nilai kehadiran secara massal.">
-          <img src="./assets/absensi.png" class="d-block w-100" alt="Absensi">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Rekap & Export Nilai"
-             data-desc="Rekap nilai semester/kelas dan export laporan ke Excel.">
-          <img src="./assets/exportNIlai.png" class="d-block w-100" alt="Export Nilai">
-        </div>
-
-        <div class="carousel-item"
-             data-title="Laporan Kelulusan"
-             data-desc="Monitoring kelulusan siswa lengkap dengan ranking dan status.">
-          <img src="./assets/laporanKelulusan.png" class="d-block w-100" alt="Kelulusan">
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <button class="carousel-control-prev" type="button"
-        data-bs-target="#dashboardCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-
-      <button class="carousel-control-next" type="button"
-        data-bs-target="#dashboardCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
+  <div style="position: relative; border-radius: var(--border-radius-md); overflow: hidden; background: var(--color-background-secondary); aspect-ratio: 9/19.5;">
+    <div id="slideWrapper" style="display: flex; height: 100%; transition: transform 0.4s ease;">
     </div>
 
-    <p id="carouselTitle" class="mt-3 text-center fw-semibold"></p>
-    <p id="carouselDesc" class="text-center text-muted small"></p>
+    <button id="btnPrev" aria-label="Sebelumnya" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.35); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #fff; padding: 0;">
+      <i class="ti ti-chevron-left" style="font-size: 16px;"></i>
+    </button>
+    <button id="btnNext" aria-label="Selanjutnya" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.35); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #fff; padding: 0;">
+      <i class="ti ti-chevron-right" style="font-size: 16px;"></i>
+    </button>
+
+    <div id="dotContainer" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10;"></div>
   </div>
 
+  <p id="carouselTitle" style="margin: 12px 0 4px; text-align: center; font-weight: 500; font-size: 15px; color: var(--color-text-primary);"></p>
+  <p id="carouselDesc" style="margin: 0 0 4px; text-align: center; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;"></p>
+  <p id="slideCounter" style="margin: 4px 0 0; text-align: center; font-size: 12px; color: var(--color-text-tertiary);"></p>
+</div>
+
+<script>
+const slides = [
+  { title: "Login/Regist Page", desc: "Buat atau Login akun mu sebelum menggunakan Aplikasi" },
+  { title: "Buat Akun", desc: "Daftarkan akun mu dan simpan progres bulanannya" },
+  { title: "Lupa Password?", desc: "Reset password mu dengan memasukkan email yang kamu daftarkan agar kami bisa mengirimkan kode OTP ke kamu" },
+  { title: "Masukkan Kode OTP", desc: "Kami mengirim kode OTP ke email kamu, pastikan kamu memerika email kamu secara berkala untuk cek kode OTP-nya" },
+  { title: "Dashboard", desc: "Dasboard adalah halaman yang akan pertama kali kamu lihat" },
+  { title: "Scan QR Code", desc: "Scan QR Code yang tampil di layar untuk memasukkan dan menyimpan data" },
+  { title: "Preview", desc: "Hasil dari progress saat ini" },
+  { title: "Dashboard", desc: "Dashboard juga akan menampilkan data paling baru dari hasil pengukuran tiap bulan" },
+  { title: "Grafik pengukuran", desc: "Lihat progress pertumbuhan anak tiap bulannya" },
+  { title: "Histori pengukuran", desc: "Lihat histori pengukuran bayi dari terbaru ke terlama" },
+  { title: "Status Balita", desc: "Lihat status balita saat ini dan tindakan apa yang tepat untuk diambil" },
+  { title: "Pengaturan", desc: "Edit identitas anak atau log out aplikasi" },
+];
+
+const imgPaths = [
+  "./assets/file_21---c98fa5e5-44a3-43e1-add0-ef27ee6abbc3.jpg",
+  "./assets/file_20---87417e5a-2cda-44b7-9c14-94d95858497e.jpg",
+  "./assets/file_19---7f22086a-79e6-422c-8e1c-385e7177ba7c.jpg",
+  "./assets/file_18---acf122e9-535d-480f-94cc-0c10947d4acb.jpg",
+  "./assets/file_17---c8624750-99ed-432d-9347-fb69b7343fa0.jpg",
+  "./assets/file_16---25dd7b8c-83f8-434e-bc10-66fba06a4c1b.jpg",
+  "./assets/file_15---2852365a-88fb-4bd9-8bec-d220a8720197.jpg",
+  "./assets/file_14---99e847c3-0c58-4876-8569-09282b9e9135.jpg",
+  "./assets/file_13---db736ede-af15-4c8a-ad23-bdc26e0a8477.jpg",
+  "./assets/file_12---e72b5777-234a-4881-959b-2b6df4856a4c.jpg",
+  "./assets/file_11---910d242f-2298-47a8-b761-d67fa932473c.jpg",
+  "./assets/file_10---6de79ca8-722b-41d7-9294-e2bd45f09519.jpg",
+];
+
+let current = 0;
+const total = slides.length;
+const wrapper = document.getElementById('slideWrapper');
+const dotContainer = document.getElementById('dotContainer');
+
+slides.forEach((s, i) => {
+  const slide = document.createElement('div');
+  slide.style.cssText = 'min-width: 100%; flex-shrink: 0; height: 100%;';
+  const img = document.createElement('img');
+  img.src = imgPaths[i];
+  img.alt = s.title;
+  img.style.cssText = 'width: 100%; height: 100%; object-fit: cover; display: block;';
+  img.onerror = function() {
+    this.style.display = 'none';
+    const ph = document.createElement('div');
+    ph.style.cssText = 'width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--color-background-secondary); color:var(--color-text-secondary); font-size:13px; text-align:center; padding:8px;';
+    ph.textContent = s.title;
+    slide.appendChild(ph);
+  };
+  slide.appendChild(img);
+  wrapper.appendChild(slide);
+
+  const dot = document.createElement('span');
+  dot.style.cssText = 'width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.45); cursor:pointer; transition:background 0.2s, transform 0.2s; display:inline-block;';
+  dot.addEventListener('click', () => goTo(i));
+  dotContainer.appendChild(dot);
+});
+
+function updateUI() {
+  wrapper.style.transform = `translateX(-${current * 100}%)`;
+  document.getElementById('carouselTitle').textContent = slides[current].title;
+  document.getElementById('carouselDesc').textContent = slides[current].desc;
+  document.getElementById('slideCounter').textContent = `${current + 1} / ${total}`;
+  dotContainer.querySelectorAll('span').forEach((d, i) => {
+    d.style.background = i === current ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.4)';
+    d.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
+  });
+}
+
+function goTo(idx) {
+  current = (idx + total) % total;
+  updateUI();
+}
+
+document.getElementById('btnPrev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('btnNext').addEventListener('click', () => goTo(current + 1));
+
+let autoplay = setInterval(() => goTo(current + 1), 4000);
+wrapper.parentElement.addEventListener('mouseenter', () => clearInterval(autoplay));
+wrapper.parentElement.addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo(current + 1), 4000); });
+
+let touchStartX = 0;
+wrapper.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+wrapper.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 30) goTo(diff > 0 ? current + 1 : current - 1);
+});
+
+updateUI();
+</script>
+
+    </div>
+  </div>
   <!-- Tentang -->
 
   <div class="section">
-    <h2>🕞 Highlight (Update yang akan datang)</h2>
+    <h2>Panduan Instalasi Aplikasi Kartu Ibu dan Anak (KIA)</h2>
     <ul class="feature-list">
-      <li>Dark Theme</li>
       <!-- <li>Penilaian Kelas 1-3</li> -->
     </ul>
-    <span><b>⚠️ Caution:</b><br> Update yang sudah rilis/development branch akan ditampilkan pratinjau-nya di sini:</span>
+    <span><b>⚠️ Caution:</b><br>Aplikasi masih dalam tahap demo, beberapa fitur mungkin masih tidak berkerja dengan benar. </span>
+    <br>
+
+    </div>
+
+
+  </div>
+
+  <div class="section">
+    <h2>📖 Tentang Aplikasi</h2>
+    <p>
+      Aplikasi KIA Digital adalah platform mobile pencatatan pertumbuhan balita untuk orang tua dan kader Posyandu, di mana setelah mendaftar dan verifikasi OTP via email, pengguna cukup scan QR Code pada alat ukur di Posyandu untuk mencatat berat badan, tinggi badan, dan lingkar kepala secara otomatis sistem kemudian menghitung IMT dan Z-score untuk menentukan status gizi balita ke dalam lima kategori, lengkap dengan catatan tindak lanjut, yang seluruh riwayatnya dapat dipantau kapan saja melalui tampilan Histori, Grafik tren pertumbuhan, dan ringkasan Status gizi terkini.
+    </p>
+
+    <h2 class="mt-3">✨ Fitur Utama</h2>
+    <ul class="feature-list">
+      <li>Dashboard untuk lihat hasil pengukuran terbaru</li>
+      <li>Grafik bulanan</li>
+      <li>Histori pengukuran</li>
+      <li>Status pertumbuhan balita saat ini</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+
+  <!-- Feedback -->
+ <div class="section">
+    <h2>Tingkatkan Literasi dan Support Developer lewat Produk ini:</h2>
+    <ul class="feature-list">
+      <!-- <li>Penilaian Kelas 1-3</li> -->
+    </ul>
+    <span><b>⚠️ Caution:</b><br>Aplikasi masih dalam tahap demo, beberapa fitur mungkin masih tidak berkerja dengan benar. </span>
     <br>
 
   <!-- Carousel -->
@@ -171,73 +249,22 @@
 
   </div>
 
-  <div class="section">
-    <h2>📖 Tentang Aplikasi</h2>
-    <p>
-      Sistem Penilaian & Rekap Nilai adalah aplikasi yang dirancang untuk
-      membantu guru ataupun tenaga pendidik dalam mengelola data akademik siswa secara cepat,
-      rapi, dan efisien.
-    </p>
-
-    <h2 class="mt-3">✨ Fitur Utama</h2>
-    <ul class="feature-list">
-      <li>Ranking Siswa</li>
-      <li>Kelola Data Siswa</li>
-      <li>Bank Mata Pelajaran</li>
-      <li>Penilaian</li>
-      <li>Absensi</li>
-      <li>Catatan Guru</li>
-      <li>Rekap Nilai/Export Nilai per-sementer/Kelas</li>
-      <li>Laporan Kelulusan</li>
-    </ul>
-  </div>
-
-  <!-- Feedback -->
-  <div class="section">
-    <h2>💬 Feedback Aplikasi</h2>
-    <p>
-      Punya masukan, bug, atau saran fitur?<br>
-      Klik tombol di bawah untuk mengirim email langsung ke kami 🤗
-    </p>
-
-    <a
-      class="bg-success" href="mailto:yudhdarma04@gmail.com?subject=Feedback%20Aplikasi%20Penilaian%20dan%20Rekap%20Nilai%20Otomatis%20v2.3.0&body=Kritik%20dan%20Saran,%0A%0A"
-      style="
-        display:inline-block;
-        padding:12px 18px;
-        margin-top: 20px;
-        color:#fff;
-        text-decoration:none;
-        border-radius:6px;
-        font-weight:600;
-      "
-    >
-      Hubungi Aku 🙂
-    </a>
-  </div>
-
-  <div class="section">
-    <h5>📑 Note:</h5>
-    <br>
-    <p>Aplikasi akan terus dipelihara, mendapatkan pembaruan entah secara User Interface atau secara Flow (alur) User Experience. Pembaruan aplikasi 90% didasari dari kritik dan saran yang kamu berikan jadi pastikan kamu memberikan kritik dan saran yaa.. :)</p>
-  </div>
-
 </div>
 
 <!-- Footer -->
-<footer class="bg-dark text-light mt-4">
+<footer class="bg-success text-light mt-4">
   <div class="container py-4 text-center">
     
-    <h6 class="mb-1">📘 Aplikasi Sistem Penilaian & Rekap Nilai</h6>
+    <h6 class="mb-1">📘 Aplikasi Kartu Ibu dan Anak (KIA)</h6>
     
     <p class="mb-1 small">
-      Versi Aplikasi: <b>v2.3.0</b>
+      Versi Aplikasi: <b>v1.0.0</b>
     </p>
 
     <hr style="height: 1px; background-color: white; border: none; margin: 1rem 0;">
     
     <p class="mb-1 small">
-      Dikembangkan untuk membantu guru mengelola nilai, absensi, dan laporan akademik.
+      Dikembangkan untuk membantu kader Posyandu dan Orang tua dalam mencatat progress tumbuh kembang balita
     </p>
 
     <p style="font-size: 14px;">Developed by Yu4ha</p>
